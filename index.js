@@ -9,13 +9,17 @@ function alert(options, title) {
         options.title = title;
 
     var av = new AlertView(options);
-    var buttons = options.buttons || [];
-    
-    for(var i in buttons) {
+    var buttons = options.buttons || [{
+        index: AlertView.ButtonType.NEUTRAL,
+        text: global.lang.ok || "OK",
+        onClick: function() {}
+    }];
+
+    for (var i in buttons) {
         var b = buttons[i];
         av.addButton(b);
     }
-    
+
     av.show();
 }
 
